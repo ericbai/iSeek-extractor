@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+    <title>iSeek Data Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 100%;
+            background-color: #645E50;
+            margin: 0;
+            width: 250px;
+        }
+        body .results {
+            display: block;
+        }
+        body .no-results {
+            display: none;
+        }
+        body.empty .results {
+            display: none;
+        }
+        body.empty .no-results {
+            display: block;
+        }
+        button {
+            border-style: none;
+            border-width: 0;
+            border-radius: 3px;
+            background-color: #645e50;
+            font-weight: bold;
+            color: #FFF !important;
+            display: inline-block;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            letter-spacing: 1px;
+            padding: 5px 10px;
+        }
+        .text-ellipsis {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .text-notable {
+            color: #EFECE5;
+            font-family: Georgia,serif;
+            font-weight: 400;
+            text-decoration: none;
+        }
+        .display-area {
+            height: 3em;
+            width: 100%;
+            background-color: #C00404;
+            position: relative;
+        }
+        .display-area img {
+            height: 100%;
+            padding: 8px 10px;
+            box-sizing: border-box;
+        }
+        .display-area .title {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0;
+            margin: 0;
+            left: 42px;
+            font-size: 1.2em;
+            padding: 2px 0 0 0;
+        }
+        .display-area button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .search-info {
+            font-size: 1.3em;
+            width: 100%;
+        }
+        .search-info:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .no-results {
+            padding: 1em 0.5em;
+            text-align: center;
+        }
+        #query {
+            width: 200px;
+            float: left;
+            padding: 0.5em;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        #num-results {
+            width: 50px;
+            float: left;
+            padding: 0.5em 0.25em;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #ACA698;
+        }
+        #modifiers {
+            background-color: white;
+            width: 100%;
+            border-spacing: 0;
+        }
+        #modifiers tr:nth-child(even) {
+            background-color: #EFECE5;
+        }
+        #modifiers tr td:first-child {
+            font-weight: 700;
+            text-align: center;
+            width: 1%;
+            font-size: 0.6em;
+            padding: 0 1.2em;
+            padding-top: 1em;
+            padding-bottom: 1em;
+        }
+        #modifiers tr td:last-child {
+            font-size: 0.9em;
+        }
+    </style>
+    <script src="popup.js"></script>
+</head>
+<body>
+    <div class="display-area">
+        <img src="brown-logo.png" alt="Brown University logo">
+        <p class="title text-notable">iSeek Exporter</p>
+    </div>
+    <div class="results">
+        <div class="search-info">
+            <div id="query" class="text-notable text-ellipsis"></div>
+            <div id="num-results" class="text-notable"></div>
+        </div>
+        <table id="modifiers"></table>
+        <div class="display-area">
+            <button type="button" id="start-export-btn">
+                Export
+            </button>
+        </div>
+    </div>
+    <div class="no-results">
+        <div class="text-notable text-ellipsis">
+            No search recorded yet
+        </div>
+    </div>
+</body>
+</html>
+
