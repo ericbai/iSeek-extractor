@@ -37,15 +37,17 @@ function doBuildAndExport(data, searchQuery, searchModifiers) {
                 instructor = titleWords[titleWords.length - 1];
             }
             var page = data[i].doclist.docs[j].page_number_i + " ";
-            var newRow = [i + 1, gradyear, semester, coursename, filetype, page, lecturetitle, date, matchtext, instructor, score];
-            dataRows.push(newRow);
+            var newRow = [i + 1, gradyear, semester, coursename, filetype, page, lecturetitle,
+                formatDate(new Date(date)), matchtext, instructor, score
+            ];
+            dataRows.push(newRow.map(escapeCsvCell));
         }
     }
     downloadFile(fileRoot + ".csv", encodeAsCsv(dataRows));
 
     // build additional search info file
     var searchInfoArray = [
-        ["Date of search", formatDate(new Date())],
+        ["Date of search", escapeCsvCell(formatDate(new Date()))],
         ["Search query", escapeCsvCell(searchQuery)]
     ];
     for (var prop in searchModifiers) {
@@ -71,7 +73,7 @@ function formatDate(date) {
     var monthIndex = date.getMonth();
     var year = date.getFullYear();
 
-    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    return monthNames[monthIndex] + ' ' + day + ', ' + year;
 }
 
 function escapeCsvCell(contents) {
