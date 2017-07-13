@@ -15,7 +15,7 @@
       "32": "iseek32.png"
     },
     "default_popup": "popup.html",
-    "default_title": "i am a default title!"
+    "default_title": "iSeek Extractor"
   },
   "permissions": [
     "declarativeContent",
